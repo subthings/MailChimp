@@ -29,11 +29,11 @@ app.post("/", (req, res) => {
     }
 
     const jsonData = JSON.stringify(data);
-    const url = "https://us" + process.env.server + ".api.mailchimp.com/3.0/lists/" + process.env.audienceListId;
+    const url = "https://us" + process.env.SERVER + ".api.mailchimp.com/3.0/lists/" + process.env.AUDIENCELISTID;
 
     const options = {
         method: "POST",
-        auth: "anna:" + process.env.apikey
+        auth: "anna:" + process.env.APIKEY
       }
 
     const request = https.request(url, options, (response) => {
@@ -44,6 +44,6 @@ app.post("/", (req, res) => {
     request.end();
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Listen port 3000");
 })
